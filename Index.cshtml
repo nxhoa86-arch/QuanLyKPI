@@ -1,0 +1,6 @@
+@model KPI.Web.Models.KpiResult?
+@{ ViewData["Title"] = "Quản lý KPI"; }
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="~/css/site.css"><title>Quản lý KPI</title></head><body>
+<div class="wrap"><div class="hero"><h1>QUẢN LÝ KPI</h1><p>Công cụ tính điểm KPI cán bộ</p></div>
+<form method="post" action="/Home/Calculate" class="card"><label>Mã cán bộ / Số hiệu CAND</label><input name="maCanBo" required placeholder="Nhập mã cán bộ"><div class="grid"><div><label>Điểm tiêu chí chung E</label><input name="diemE" type="number" step="0.01" value="0"></div><div><label>Điểm cộng</label><input name="diemCong" type="number" step="0.01" value="0"></div><div><label>Điểm trừ</label><input name="diemTru" type="number" step="0.01" value="0"></div></div><button type="submit">TÍNH ĐIỂM KPI</button></form>
+@if(Model is not null){<div class="card result"><h2>Kết quả</h2><div class="score"><strong>@Model.Tong.ToString("N2")</strong><span>điểm</span></div><p><b>Bảng A:</b> @Model.DiemA.ToString("N2")</p><p><b>Bảng B:</b> @Model.DiemB.ToString("N2")</p><p><b>A + B:</b> @Model.DiemM.ToString("N2")</p><p><b>Tiêu chí chung E:</b> @Model.DiemE.ToString("N2")</p><p><b>Xếp loại:</b> @Model.XepLoai</p></div>}</div></body></html>
